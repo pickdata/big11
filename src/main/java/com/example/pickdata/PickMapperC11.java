@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import com.pickdata.beta.Beta;
-import com.pickdata.parser.BigContestParser;
+import com.example.pickdata.BigContestParser;
 
 public class PickMapperC11 extends Mapper<Text, Text, Text, DoubleWritable> {
 	/*
@@ -25,7 +25,6 @@ public class PickMapperC11 extends Mapper<Text, Text, Text, DoubleWritable> {
 	   protected void map(Text key, Text value, Context context) throws IOException, InterruptedException {
 	      BigContestParser parser = new BigContestParser(value);
 
-	      // Paser를 통해 고객의 c11번째 범주값을 구한다.
 	      /*
 	       * parser의 key - value는 변수 이름 - 해당 범주값
 	       * 변수 이름 c11로 해당 고객의 c11 값을 가져온다.
@@ -34,8 +33,10 @@ public class PickMapperC11 extends Mapper<Text, Text, Text, DoubleWritable> {
 	       * #### 예를 들어, 실제 데이터는 2인데, 파서가 double로 되어 있어서 2.0으로 인식
 	       * #### 파서는 integer로 변환해도 되지 않을까?
 	       */
-	      Double yyy = (Double) parser.map.get("c11");
-	      int c11Value = yyy.intValue();
+	      
+	      
+	      // Paser를 통해 고객의 c11번째 범주값을 구한다.
+	      Integer c11Value= Integer.parseInt((String) parser.map.get("c11"));
 	      
 	      // 범주값을 키로 베타 값을 구함.
 	      beta = betaClass.mapc11().get("b"+c11Value);
