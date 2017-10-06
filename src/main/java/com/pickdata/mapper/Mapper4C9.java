@@ -13,7 +13,7 @@ public class Mapper4C9 extends Mapper<Text, Text, Text,Text> {
 	Text outValue = new Text();
 	Score scoreClass = new Score();
 	String columnName = "c9";
-	
+
 	@Override
 	protected void map(Text key, Text value, Context context)
 			throws IOException, InterruptedException {
