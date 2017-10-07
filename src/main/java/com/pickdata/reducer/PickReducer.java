@@ -9,13 +9,13 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import com.pickdata.TaggedKey.TaggedKey;
 
-public class PickReducer extends Reducer<TaggedKey, Text, Text, Text> {
+public class PickReducer extends Reducer<Text, Text, Text, Text> {
 
 	Text outputKey = new Text();
 	Text outValue = new Text();
 	
 	@Override
-	protected void reduce(TaggedKey key, Iterable<Text> values, Context context)
+	protected void reduce(Text key, Iterable<Text> values, Context context)
 			throws IOException, InterruptedException {
 		
 		// id 가 같은 값들끼리 리듀스 입력으로 들어옴.
@@ -51,7 +51,7 @@ public class PickReducer extends Reducer<TaggedKey, Text, Text, Text> {
 			sum += Integer.parseInt(columnScore[2]);
 		}
 
-		outputKey.set(key.getId());
+		outputKey.set(key);
 		outValue.set(sum+"");
 		context.write(outputKey, outValue);
 		

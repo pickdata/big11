@@ -72,7 +72,7 @@ public class Beta {
 		mapI19.put("0", betasI19[0]);
 		// method overloading
 		mapI19 = mapPutter(betasI19,1,"0미만");
-		mapI19.put("90이상", betasI19[betasI19.length]);
+		mapI19.put("90이상", betasI19[8]);
 		
 		if(columnName.equals("t13")||columnName.equals("T13")){
 			returnMap = mapT13;

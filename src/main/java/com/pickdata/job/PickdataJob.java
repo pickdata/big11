@@ -68,7 +68,7 @@ public class PickdataJob extends Configured implements Tool {
 		
 		// Mapper 출력 키,밸류 타입 설정 
 		// Reduceside Join 시 필요한 복합키( Key "id,T13" / Text value ) 클래스 정의
-		job.setMapOutputKeyClass(TaggedKey.class);
+		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);
 		job.setSortComparatorClass(TaggedGroupKeyComparator.class);
 		
