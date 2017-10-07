@@ -25,8 +25,8 @@ import org.apache.hadoop.mapred.lib.MultipleInputs;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import com.pickdata.mapper.Mapper2C11;
-import com.pickdata.mapper.Mapper5I19;
+import com.example.pickdata.Mapper2C11;
+import com.example.pickdata.Mapper5I19;
 
 public class SequenceFileCreatorMap2C11 extends Configured implements Tool {
 

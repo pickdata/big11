@@ -11,9 +11,11 @@ public class Score {
 		Beta betaClass = new Beta();
 		
 		beta = betaClass.map(columnName).get(customerValue);
+		System.out.println("Score.offset() beta = "+beta);
 		// 컬럼명을 매개변수로 하여 베타맵을 호출한 뒤에 리턴된 해당 컬럼맵을 
 		// minbeta 메소드의 매개변수로 입력하여 min값 구하기
 		minBeta = betaClass.minBeta(betaClass.map(columnName));
+		System.out.println("Score.offset() minBeta = "+minBeta);
 		return (beta) - (minBeta);
 	}
 	

@@ -3,7 +3,7 @@ package com.pickdata.TaggedKey;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
-import com.pickdata.*;
+import com.pickdata.test.*;
 
 public class TaggedGroupKeyComparator extends WritableComparator{
 
