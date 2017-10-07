@@ -28,14 +28,13 @@ import org.apache.hadoop.util.ToolRunner;
 import com.example.pickdata.Mapper2C11;
 import com.example.pickdata.Mapper5I19;
 
-public class SequenceFileCreatorMap2C11 extends Configured implements Tool {
+public class SequenceFileCreatorMap extends Configured implements Tool {
 
-	static Log log = LogFactory.getLog(SequenceFileCreatorMap2C11.class);
+	static Log log = LogFactory.getLog(SequenceFileCreatorMap.class);
 	
 	public static void main(String[] args) throws Exception {
 		if(args.length == 0){
-			ToolRunner.printGenericCommandUsage(System.out);
-		
+			
 			args = new String[] {"-fs", "hdfs://bigdata01:9000",
 									"-jt", "bigdata01:9001"
 						};
@@ -45,16 +44,16 @@ public class SequenceFileCreatorMap2C11 extends Configured implements Tool {
 	
 		}
 		//분산 캐시 역할
-		ToolRunner.run(new SequenceFileCreatorMap2C11(), args);
+		ToolRunner.run(new SequenceFileCreatorMap(), args);
 
 	}
 
 	@Override
 	public int run(String[] arg0) throws Exception {
 		
-		JobConf job = new JobConf(SequenceFileCreatorMap2C11.class);
+		JobConf job = new JobConf(SequenceFileCreatorMap.class);
 		
-		job.setJobName("SequenceFileCreator C11");
+		job.setJobName("SequenceFileCreator I19");
 		
 		Path inpath = new Path("/home/java/pickdata/sample/sample_data.csv");
 		
@@ -69,7 +68,7 @@ public class SequenceFileCreatorMap2C11 extends Configured implements Tool {
 		
 		job.setOutputFormat(SequenceFileOutputFormat.class);
 		
-		Path outputDir = new Path("/home/java/pickdata/sample/sequence/c11");
+		Path outputDir = new Path("/home/java/pickdata/sample/sequence/i19");
 		FileOutputFormat.setOutputPath(job, outputDir);
 		
 		SequenceFileOutputFormat.setCompressOutput(job, true);

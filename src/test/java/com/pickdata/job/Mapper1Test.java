@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.MapDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pickdata.mapper.Mapper2C11;
+import com.example.pickdata.Mapper2C11;
+import com.example.pickdata.Mapper5I19;
 
 public class Mapper1Test {
 
@@ -25,13 +25,13 @@ public class Mapper1Test {
 
 	@Before
 	public void setUp() throws Exception {
-		map = MapDriver.newMapDriver(new Mapper2C11()); // 초기화
+		map = MapDriver.newMapDriver(new Mapper5I19()); // 초기화
 	}
 
 	@Test
 	public void test() throws IOException {
-		map.setInput(new LongWritable(), new Text(record1));
-		map.withOutput(new Text("1"), new Text("175.06477974885388"));
+		map.setInput(new LongWritable(), new Text(record2));
+		map.withOutput(new Text("2"), new Text("8.411121936254789"));
 
 		map.runTest();
 	}

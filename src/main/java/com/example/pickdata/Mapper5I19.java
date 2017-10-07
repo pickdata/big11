@@ -20,16 +20,15 @@ public class Mapper5I19 implements Mapper<LongWritable, Text, Text, Text> {
 	Text outValue = new Text();
 	Score scoreClass = new Score();
 	String columnName = "i19";
+	double score;
 
 	@Override
 	public void configure(JobConf arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -38,10 +37,20 @@ public class Mapper5I19 implements Mapper<LongWritable, Text, Text, Text> {
 			throws IOException {
 
 		BigContestParser parser = new BigContestParser(value);
+		
 		String customerValue = (String) parser.map.get(columnName);
+		
+		if("0".equals(customerValue))
+			customerValue = "0.0";
+		
+		System.out.println("id = " + parser.map.get("id") + "");
+		System.out.println("customerValue = " + customerValue);
+		System.out.println("Score = " + scoreClass.scoreCal(columnName, customerValue) + "");
+		
+		score = scoreClass.scoreCal(columnName, customerValue);
 
 		outputKey.set(parser.map.get("id") + "");
-		outValue.set(scoreClass.scoreCal(columnName, customerValue) + "");
+		outValue.set(score + "");
 
 		output.collect(outputKey, outValue);
 	}

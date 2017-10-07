@@ -22,13 +22,11 @@ public class Mapper2C11 implements Mapper<LongWritable, Text, Text, Text> {
 	
 	@Override
 	public void configure(JobConf arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -43,21 +41,6 @@ public class Mapper2C11 implements Mapper<LongWritable, Text, Text, Text> {
 
 		output.collect(outputKey, outValue);
 	}
-		
-
-	/*
-	@Override
-	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		
-		BigContestParser parser = new BigContestParser(value);
-		String customerValue = (String) parser.map.get(columnName);
-
-		outputKey.set(parser.map.get("id") + "");
-		outValue.set(scoreClass.scoreCal(columnName, customerValue) + "");
-
-		context.write(outputKey, outValue);
-	}
-*/
 
 	
 }

@@ -12,17 +12,20 @@ public class Score {
 		
 		beta = betaClass.map(columnName).get(customerValue);
 		System.out.println("Score.offset() beta = "+beta);
+		
 		// 컬럼명을 매개변수로 하여 베타맵을 호출한 뒤에 리턴된 해당 컬럼맵을 
 		// minbeta 메소드의 매개변수로 입력하여 min값 구하기
 		minBeta = betaClass.minBeta(betaClass.map(columnName));
 		System.out.println("Score.offset() minBeta = "+minBeta);
+		System.out.println("offset = "+ (beta - minBeta));
 		return (beta) - (minBeta);
 	}
 	
 	// 매퍼에서 넘겨받은 컬럼명과, 고객의 범주값을 옵셋의 매개변수로 전달한다.
 	// 옵셋에서 처리한뒤 결과값만 받아서 계산식에 적용한 후 총점 값을 반환한다.
 	public double scoreCal(String columnName,String customerValue) {
-		return offset(columnName,customerValue) * pod / Math.log(2);
+		System.out.println("log = " + Math.log10(2));
+		return offset(columnName,customerValue) * pod / Math.log10(2);
 	}
 
 	public int getPod() {
