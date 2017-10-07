@@ -48,8 +48,7 @@ public class SequenceFileCreatorMap4C9 extends Configured implements Tool {
 		Job job = Job.getInstance(getConf(),"SequenceFileCreator");
 		
 		job.setJarByClass(SequenceFileCreatorMap4C9.class);
-		FileInputFormat.setInputPaths(job, "/home/java/dataexpo/1987_nohead.csv");
-		FileInputFormat.addInputPaths(job, "/home/java/dataexpo/1988_nohead.csv");
+		FileInputFormat.setInputPaths(job, "/home/java/pickdata/sample/sample_data.csv");
 
 		job.setInputFormatClass(TextInputFormat.class);
 		
@@ -68,7 +67,7 @@ public class SequenceFileCreatorMap4C9 extends Configured implements Tool {
 		//sequence file로 출력: binary 형태
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 		
-		Path outputDir = new Path("/home/java/dataexpo_seq/1988");
+		Path outputDir = new Path("/home/java/pickdata/sample/sequence/c9");
 		FileOutputFormat.setOutputPath(job, outputDir);
 		
 		
