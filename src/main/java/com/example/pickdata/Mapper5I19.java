@@ -39,9 +39,8 @@ public class Mapper5I19 implements Mapper<LongWritable, Text, Text, Text> {
 		BigContestParser parser = new BigContestParser(value);
 		
 		String customerValue = (String) parser.map.get(columnName);
-		
-		if("0".equals(customerValue))
-			customerValue = "0.0";
+//		if("0".equals(customerValue))
+//			customerValue = "0.0";
 		
 		System.out.println("id = " + parser.map.get("id") + "");
 		System.out.println("customerValue = " + customerValue);

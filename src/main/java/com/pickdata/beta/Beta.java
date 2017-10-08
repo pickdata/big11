@@ -62,18 +62,18 @@ public class Beta {
 		// C9  범주값 0, 1 ~ 121 증가값(+12) 
 		Map<String, Double> mapC9 = new HashMap<String, Double>();
 		Double[] betasC9 = new Double[] { -0.1807, -0.2529, 0.4859, 0.644, 0.8846, 1.1339, 1.2745, 0.7857, -0.1499,	0.4584, 0.1351, 0.0 };
-		mapC9.put("0", betasC9[0]);
 		// method overloading
 		mapC9 = mapPutter(betasC9,1,12);
+		mapC9.put("0", betasC9[0]);
 		
 		// I19 범주값 0,10미만,20미만,30미만,40미만,50미만,60미만,70미만,80미만,90미만,90이상
 		Map<String, Double> mapI19 = new HashMap<String, Double>();
 		Double[] betasI19 = new Double[] { -2.3813, -2.1266, -2.0, -1.6275, -1.4356, -1.2816, -1.2377, -0.5328, 0.0 };
-		mapI19.put("0", betasI19[0]);
 		// method overloading
 		mapI19 = mapPutter(betasI19,1,"0미만");
 //		mapI19.put("90이상", betasI19[betasI19.length]);
 		mapI19.put("90이상", betasI19[8]);
+		mapI19.put("0", betasI19[0]);
 		
 		if(columnName.equals("t13")||columnName.equals("T13")){
 			returnMap = mapT13;

@@ -55,7 +55,7 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		
 		job.setJobName("SequenceFileCreator I19");
 		
-		Path inpath = new Path("/home/java/pickdata/sample/sample_data.csv");
+		Path inpath = new Path("/home/java/pickdata/sample/Data_set.csv");
 		
 		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, Mapper2C11.class);
 		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, Mapper5I19.class);
@@ -68,7 +68,7 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		
 		job.setOutputFormat(SequenceFileOutputFormat.class);
 		
-		Path outputDir = new Path("/home/java/pickdata/sample/sequence/i19");
+		Path outputDir = new Path("/home/java/pickdata/sample/sequence/all");
 		FileOutputFormat.setOutputPath(job, outputDir);
 		
 		SequenceFileOutputFormat.setCompressOutput(job, true);

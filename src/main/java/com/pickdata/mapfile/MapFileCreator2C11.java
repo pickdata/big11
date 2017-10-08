@@ -26,7 +26,6 @@ public class MapFileCreator2C11 extends Configured implements Tool {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length == 0) {
-			ToolRunner.printGenericCommandUsage(System.out);
 
 			args = new String[] { "-fs", "hdfs://bigdata01:9000", "-jt", "bigdata01:9001", };
 			System.out.println(Arrays.toString(args));
@@ -42,7 +41,7 @@ public class MapFileCreator2C11 extends Configured implements Tool {
 		job.setJobName("MapFileCreator C11");
 //		job.setJarByClass(MapFileCreator2C11.class);
 
-		FileInputFormat.addInputPaths(job, "/home/java/pickdata/sample/sequence/c11");
+		FileInputFormat.addInputPaths(job, "/home/java/pickdata/sample/sequence/all");
 		job.setInputFormat(SequenceFileInputFormat.class);
 
 //		job.setNumReduceTasks(3);
@@ -54,7 +53,7 @@ public class MapFileCreator2C11 extends Configured implements Tool {
 
 		// map file로 출력: map 형식으로 저장
 		job.setOutputFormat(MapFileOutputFormat.class);
-		Path outputDir = new Path("/home/java/pickdata/sample/mapfile/c11");
+		Path outputDir = new Path("/home/java/pickdata/sample/mapfile/all");
 		FileOutputFormat.setOutputPath(job, outputDir);
 
 		/*
