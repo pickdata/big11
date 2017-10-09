@@ -12,6 +12,7 @@ import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
+import com.example.pickdata.ColumnList;
 import com.pickdata.taggedKey.TaggedKey;
 
 public class PickReducer2 implements Reducer<TaggedKey, DoubleWritable, Text, DoubleWritable> {
@@ -30,33 +31,36 @@ public class PickReducer2 implements Reducer<TaggedKey, DoubleWritable, Text, Do
 	@Override
 	public void reduce(TaggedKey key, Iterator<DoubleWritable> values, OutputCollector<Text, DoubleWritable> output,
 			Reporter reporter) throws IOException {
-		
+
 		if (getId() == null) {
 			setId(key.getId());
 			setTotalSum(values.next().get());
 			log.info(getId() + ", totalsum = " + totalSum);
-			
+
 		} else {
 			setNextId(key.getId());
-			
+
 			if (getId().equals(getNextId())) {
 				setTotalSum(getTotalSum() + values.next().get());
-				
+
+
 			} else {
 				log.info("#################");
-				log.info("output : "+getId() + ", totalsum = " + totalSum);
+				log.info("output : " + getId() + ", totalsum = " + totalSum);
 				log.info("#################");
-				output.collect(new Text(getId()+""), new DoubleWritable(getTotalSum()));
+				output.collect(new Text(getId() + ""), new DoubleWritable(getTotalSum()));
 				setId(getNextId());
 				setTotalSum(values.next().get());
 			}
 		}
-//		if(values.hasNext()==false){
-//			log.info("#################");
-//			log.info("last output : "+getId() + ", totalsum = " + totalSum);
-//			log.info("#################");
-//			output.collect(new Text(getId()), new DoubleWritable(getTotalSum()));
-//		}
+		if (key.getId() == 102252
+				&& key.getTag().equals(ColumnList.columnName[ColumnList.columnName.length - 1])) {
+			log.info("#################");
+			log.info("output : " + getId() + ", totalsum = " + totalSum);
+			log.info("#################");
+			output.collect(new Text(getId() + ""), new DoubleWritable(getTotalSum()));
+		}
+
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile.CompressionType;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.mapred.FileInputFormat;
@@ -25,12 +26,6 @@ public class MapFileCreator extends Configured implements Tool {
 	static Log log = LogFactory.getLog(MapFileCreator.class);
 
 	public static void main(String[] args) throws Exception {
-		if (args.length == 0) {
-
-			args = new String[] { "-fs", "hdfs://bigdata01:9000", "-jt", "bigdata01:9001", };
-			System.out.println(Arrays.toString(args));
-			log.info(Arrays.toString(args));
-		}
 		ToolRunner.run(new MapFileCreator(), args);
 	}
 
@@ -38,7 +33,7 @@ public class MapFileCreator extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 
 		JobConf job = new JobConf(getConf());
-		job.setJobName("MapFileCreator C11");
+		job.setJobName("MapFileCreator");
 //		job.setJarByClass(MapFileCreator2C11.class);
 
 		FileInputFormat.addInputPaths(job, "/home/java/pickdata/sample/sequence/all");
@@ -46,8 +41,10 @@ public class MapFileCreator extends Configured implements Tool {
 
 //		job.setNumReduceTasks(3);
 		
-		job.setOutputKeyClass(Text.class);
+//		job.setOutputKeyClass(Text.class);
 //		job.setOutputValueClass(Text.class);
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(DoubleWritable.class);
 		/////////////////////////////////////
 
 

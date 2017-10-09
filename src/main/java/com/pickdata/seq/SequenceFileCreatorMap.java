@@ -56,10 +56,10 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		
 		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, Mapper5I19.class);
 
+//		job.set("mapred.textoutputformat.separatorText", ",");
 		
 		job.setMapOutputKeyClass(TaggedKey.class);
 		job.setMapOutputValueClass(DoubleWritable.class);
-		
 		
 		job.setNumReduceTasks(1);
 		job.setReducerClass(PickReducer2.class);

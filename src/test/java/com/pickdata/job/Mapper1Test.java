@@ -6,6 +6,7 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.MapDriver;
+import org.apache.taglibs.standard.tag.common.xml.SetTag;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,7 +41,7 @@ public class Mapper1Test {
 	@Test
 	public void testID51369() throws IOException {
 		map.setInput(new LongWritable(), new Text(record6));
-//		map.withOutput(new Text("51369"), new DoubleWritable(122.81168166798578));
+//		map.withOutput(new TaggedKey(setId(51369),setTag("i19")), new DoubleWritable(122.81168166798578));
 
 		map.runTest();
 	}

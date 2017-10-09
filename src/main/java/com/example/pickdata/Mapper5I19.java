@@ -19,7 +19,8 @@ public class Mapper5I19 implements Mapper<LongWritable, Text, TaggedKey, DoubleW
 	TaggedKey outputKey = new TaggedKey();
    DoubleWritable outValue = new DoubleWritable();
    Score scoreClass = new Score();
-   String[] columnName = {"i19","c11"};
+//   ColumnList cl = new ColumnList();
+   String[] columnName = ColumnList.columnName;
    double score;
 
    @Override
