@@ -68,11 +68,11 @@ public class Beta {
 		
 		// I19 범주값 0,10미만,20미만,30미만,40미만,50미만,60미만,70미만,80미만,90미만,90이상
 		Map<String, Double> mapI19 = new HashMap<String, Double>();
-		Double[] betasI19 = new Double[] { -2.3813, -2.1266, -2.0, -1.6275, -1.4356, -1.2816, -1.2377, -0.5328, 0.0 };
+		Double[] betasI19 = new Double[] { -2.3813, -2.1266, -2.0, -1.6275, -1.4356, -1.2816, -1.2377, 0.0, 0.0, -0.5328, 0.0 };
 		// method overloading
 		mapI19 = mapPutter(betasI19,1,"0미만");
 //		mapI19.put("90이상", betasI19[betasI19.length]);
-		mapI19.put("90이상", betasI19[8]);
+		mapI19.put("90이상", betasI19[10]);
 		mapI19.put("0", betasI19[0]);
 		
 		if(columnName.equals("t13")||columnName.equals("T13")){

@@ -16,7 +16,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.SequenceFileOutputFormat;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.lib.MultipleInputs;
-
+import org.apache.hadoop.mapred.lib.MultipleOutputs;
 //import org.apache.hadoop.mapreduce.Job;
 //import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 //import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -34,11 +34,6 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 	
 	public static void main(String[] args) throws Exception {
 		if(args.length == 0){
-			
-			args = new String[] {"-fs", "hdfs://bigdata01:9000",
-									"-jt", "bigdata01:9001"
-						};
-			
 			System.out.println(Arrays.toString(args));
 			log.info(Arrays.toString(args));
 	
@@ -47,6 +42,7 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		ToolRunner.run(new SequenceFileCreatorMap(), args);
 
 	}
+	
 
 	@Override
 	public int run(String[] arg0) throws Exception {
@@ -70,6 +66,9 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		
 		Path outputDir = new Path("/home/java/pickdata/sample/sequence/all");
 		FileOutputFormat.setOutputPath(job, outputDir);
+		
+		MultipleOutputs.addNamedOutput(job, "c11", SequenceFileOutputFormat.class, Text.class, Text.class);
+		MultipleOutputs.addNamedOutput(job, "i19", SequenceFileOutputFormat.class, Text.class, Text.class);
 		
 		SequenceFileOutputFormat.setCompressOutput(job, true);
 		SequenceFileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);

@@ -18,9 +18,9 @@ import org.apache.hadoop.util.ToolRunner;
 /*
  * hdfs에서 검색하는 프로그램 : 204페이지
  */
-public class SearchValueListC11 extends Configured implements Tool {
+public class SearchValueList extends Configured implements Tool {
 
-	static Log log = LogFactory.getLog(SearchValueListC11.class);
+	static Log log = LogFactory.getLog(SearchValueList.class);
 
 	public static void main(String[] args) throws Exception {
 		if (args.length == 0) {
@@ -29,7 +29,7 @@ public class SearchValueListC11 extends Configured implements Tool {
 			System.out.println(Arrays.toString(args));
 			log.info(Arrays.toString(args));
 		}
-		ToolRunner.run(new SearchValueListC11(), args);
+		ToolRunner.run(new SearchValueList(), args);
 	}
 
 	@Override

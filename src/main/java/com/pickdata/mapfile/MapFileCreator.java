@@ -20,9 +20,9 @@ import org.apache.hadoop.mapred.SequenceFileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class MapFileCreator2C11 extends Configured implements Tool {
+public class MapFileCreator extends Configured implements Tool {
 
-	static Log log = LogFactory.getLog(MapFileCreator2C11.class);
+	static Log log = LogFactory.getLog(MapFileCreator.class);
 
 	public static void main(String[] args) throws Exception {
 		if (args.length == 0) {
@@ -31,7 +31,7 @@ public class MapFileCreator2C11 extends Configured implements Tool {
 			System.out.println(Arrays.toString(args));
 			log.info(Arrays.toString(args));
 		}
-		ToolRunner.run(new MapFileCreator2C11(), args);
+		ToolRunner.run(new MapFileCreator(), args);
 	}
 
 	@Override

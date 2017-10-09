@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.hadoop.io.Text;
 
-
 public class BigContestParser {
 
 	public Map<String, String> map = new HashMap<String, String>();

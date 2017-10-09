@@ -36,8 +36,13 @@ public class Mapper2C11 implements Mapper<LongWritable, Text, Text, Text> {
 		BigContestParser parser = new BigContestParser(value);
 		String customerValue = (String) parser.map.get(columnName);
 
-		outputKey.set(parser.map.get("id") + "");
+		//key set
+		outputKey.set(parser.map.get("id") + ","+ columnName);
+		System.out.println("c11 id = " + parser.map.get("id"));
+
+		//value set
 		outValue.set(scoreClass.scoreCal(columnName, customerValue) + "");
+		System.out.println("c11  customerValue" + customerValue);
 
 		output.collect(outputKey, outValue);
 	}
