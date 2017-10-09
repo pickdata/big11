@@ -1,4 +1,4 @@
-package com.pickdata.TaggedKey;
+package com.pickdata.taggedKey;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -8,25 +8,28 @@ import java.util.Objects;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableUtils;
 
+public class TaggedKey implements WritableComparable<TaggedKey> {
 
-public class TaggedKey implements WritableComparable<TaggedKey>{
-	String id;
-	Integer tag;
-	
-	public TaggedKey(){
-		
+	Integer id;
+
+	// 변수이름
+	String tag;
+
+	public TaggedKey() {
+
 	}
-	public TaggedKey(String id, Integer tag){
+
+	public TaggedKey(Integer id, String tag) {
 		this.id = id;
 		this.tag = tag;
 	}
-	
+
 	@Override
 	public int hashCode() {
-		
-		return Objects.hash(id,tag);
+
+		return Objects.hash(id, tag);
 	}
-	
+
 	@Override
 	public String toString() {
 		return id + "," + tag;
@@ -34,36 +37,40 @@ public class TaggedKey implements WritableComparable<TaggedKey>{
 
 	@Override
 	public void write(DataOutput out) throws IOException {
-		WritableUtils.writeString(out, id);
-		out.writeInt(tag);
+		out.writeInt(id);
+		WritableUtils.writeString(out, tag);
 	}
 
 	@Override
 	public void readFields(DataInput in) throws IOException {
-		id = WritableUtils.readString(in);
-		tag = in.readInt();
+		id = in.readInt();
+		tag = WritableUtils.readString(in);
 	}
 
 	@Override
 	public int compareTo(TaggedKey o) {
 		int cmp = id.compareTo(o.id);
-		
-		if (cmp==0){
+
+		if (cmp == 0) {
 			cmp = tag.compareTo(o.tag);
 		}
-		
+
 		return cmp;
 	}
-	public String getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getTag() {
+
+	public String getTag() {
 		return tag;
 	}
-	public void setTag(Integer tag) {
+
+	public void setTag(String tag) {
 		this.tag = tag;
-	}		
+	}
 }

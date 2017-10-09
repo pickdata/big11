@@ -2,6 +2,7 @@ package com.pickdata.job;
 
 import java.io.IOException;
 
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.MapDriver;
@@ -10,10 +11,11 @@ import org.junit.Test;
 
 import com.example.pickdata.Mapper2C11;
 import com.example.pickdata.Mapper5I19;
+import com.pickdata.taggedKey.TaggedKey;
 
 public class Mapper1Test {
 
-	MapDriver<LongWritable, Text, Text, Text> map;
+	MapDriver<LongWritable, Text, TaggedKey, DoubleWritable> map;
 						  // c1,2,3,4,5, 6, 7, 8,9,10,11
 	String record1 = "1,0,1,0,0,0,9001,9001,9001,0,1,0,2,13,3,420001,공무원,5400,7700,4,1,24,주부,0,0,0,0,0,0,0,0,0,0,12,20미만,0,0,0,0,190000,0,190000,0,190000,20000000,20000000,0,0,10,0,0,0,50,1,450,493,,30000,80000,N,800000,20111,0,0,0,0,O,U,580000";
 	String record2 = "2,0,1,0,0,0,24001,0,24001,0,0,0,2,121,0,0,자영업,5500,8100,4,2,29,주부,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,110000,0,0,7000000,36000000,0,0,0,300000,2,5,50,1,81,22,,30000,40000,N,500000,20143,0,0,0,0,O,U,90000";
@@ -30,7 +32,7 @@ public class Mapper1Test {
 	@Test
 	public void test() throws IOException {
 		map.setInput(new LongWritable(), new Text(record2));
-		map.withOutput(new Text("2"), new Text("0.0"));
+//		map.withOutput(new Text("2"), new DoubleWritable(0.0));
 
 		map.runTest();
 	}
@@ -38,7 +40,7 @@ public class Mapper1Test {
 	@Test
 	public void testID51369() throws IOException {
 		map.setInput(new LongWritable(), new Text(record6));
-		map.withOutput(new Text("51369"), new Text("122.81168166798578"));
+//		map.withOutput(new Text("51369"), new DoubleWritable(122.81168166798578));
 
 		map.runTest();
 	}

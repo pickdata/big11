@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.SequenceFile.CompressionType;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.compress.GzipCodec;
@@ -25,8 +26,9 @@ import org.apache.hadoop.mapred.lib.MultipleOutputs;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import com.example.pickdata.Mapper2C11;
 import com.example.pickdata.Mapper5I19;
+import com.pickdata.reducer.PickReducer2;
+import com.pickdata.taggedKey.TaggedKey;
 
 public class SequenceFileCreatorMap extends Configured implements Tool {
 
@@ -42,33 +44,36 @@ public class SequenceFileCreatorMap extends Configured implements Tool {
 		ToolRunner.run(new SequenceFileCreatorMap(), args);
 
 	}
-	
 
 	@Override
 	public int run(String[] arg0) throws Exception {
 		
 		JobConf job = new JobConf(SequenceFileCreatorMap.class);
 		
-		job.setJobName("SequenceFileCreator I19");
+		job.setJobName("SequenceFileCreator");
 		
 		Path inpath = new Path("/home/java/pickdata/sample/Data_set.csv");
 		
-		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, Mapper2C11.class);
 		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, Mapper5I19.class);
-		
-		job.setNumReduceTasks(0);
 
+		
+		job.setMapOutputKeyClass(TaggedKey.class);
+		job.setMapOutputValueClass(DoubleWritable.class);
+		
+		
+		job.setNumReduceTasks(1);
+		job.setReducerClass(PickReducer2.class);
 		//출력 키를 id(Text) - 점수(Text)로 설정
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+		job.setOutputValueClass(DoubleWritable.class);
 		
 		job.setOutputFormat(SequenceFileOutputFormat.class);
 		
 		Path outputDir = new Path("/home/java/pickdata/sample/sequence/all");
 		FileOutputFormat.setOutputPath(job, outputDir);
 		
-		MultipleOutputs.addNamedOutput(job, "c11", SequenceFileOutputFormat.class, Text.class, Text.class);
-		MultipleOutputs.addNamedOutput(job, "i19", SequenceFileOutputFormat.class, Text.class, Text.class);
+//		MultipleOutputs.addNamedOutput(job, "c11", SequenceFileOutputFormat.class, Text.class, Text.class);
+//		MultipleOutputs.addNamedOutput(job, "i19", SequenceFileOutputFormat.class, Text.class, Text.class);
 		
 		SequenceFileOutputFormat.setCompressOutput(job, true);
 		SequenceFileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);
