@@ -12,12 +12,12 @@ import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
-import com.example.pickdata.ColumnList;
+import com.pickdata.taggedKey.ColumnList;
 import com.pickdata.taggedKey.TaggedKey;
 
-public class PickReducer2 implements Reducer<TaggedKey, DoubleWritable, Text, DoubleWritable> {
+public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text, DoubleWritable> {
 
-	static Log log = LogFactory.getLog(PickReducer2.class);
+	static Log log = LogFactory.getLog(PickdataReducer.class);
 
 	// 리듀스 출력 key, value
 	private TaggedKey outputKey = new TaggedKey();

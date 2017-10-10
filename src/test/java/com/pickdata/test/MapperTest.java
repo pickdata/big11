@@ -9,7 +9,7 @@ import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pickdata.mapper.Mapper5I19;
+import com.pickdata.mapper.PickdataMapper;
 //import com.pickdata.reducer.PickReducer;
 
 public class MapperTest {
@@ -21,11 +21,11 @@ public class MapperTest {
 	
 	@Before
 	public void setup() {
-		Mapper5I19 mapper = new Mapper5I19();
+		PickdataMapper mapper = new PickdataMapper();
 //		PickReducer reducer = new PickReducer();
 		
 		mapDriver = new MapDriver<Text, Text, Text, Text>(); 
-		mapDriver.setMapper(mapper);
+//		mapDriver.setMapper(mapper);
 		
 	}
 	

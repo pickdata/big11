@@ -10,8 +10,7 @@ import org.apache.taglibs.standard.tag.common.xml.SetTag;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.pickdata.Mapper2C11;
-import com.example.pickdata.Mapper5I19;
+import com.pickdata.mapper.PickdataMapper;
 import com.pickdata.taggedKey.TaggedKey;
 
 public class Mapper1Test {
@@ -27,7 +26,7 @@ public class Mapper1Test {
 
 	@Before
 	public void setUp() throws Exception {
-		map = MapDriver.newMapDriver(new Mapper5I19()); // 초기화
+		map = MapDriver.newMapDriver(new PickdataMapper()); // 초기화
 	}
 
 	@Test
