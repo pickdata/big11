@@ -9,20 +9,10 @@ public class ColumnList2 {
 	public ColumnList2(){
 		// 범주형
 		categoryData.add("c1");
-		categoryData.add("c1");
-		categoryData.add("c1");
-		categoryData.add("c1");
-		categoryData.add("c1");
-		categoryData.add("c1");
-		categoryData.add("c1");
+		categoryData.add("c2");
 		
 		// 수치형
-		nemericData.add("i13");
-		nemericData.add("i13");
-		nemericData.add("i13");
-		nemericData.add("i13");
-		nemericData.add("i13");
-		nemericData.add("i13");
+		nemericData.add("c5");
 		
 	}
 
