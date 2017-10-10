@@ -143,19 +143,19 @@ public class Beta {
       String betasI36 = new String();
       mapI36.put(betasI36, -0.0678);
 
-      // IMP_age 범주값 0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70
-      Map<String, Double> mapIMP_age = new HashMap<String, Double>();
-      Double[] betasIMP_age = new Double[] { 0.0, -0.5675, -0.4438, -0.1262, 0.2786, 0.1947, 0.2117, 0.1288, 0.0302,
+      // age 범주값 0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70
+      Map<String, Double> mapAge = new HashMap<String, Double>();
+      Double[] betasAge = new Double[] { 0.0, -0.5675, -0.4438, -0.1262, 0.2786, 0.1947, 0.2117, 0.1288, 0.0302,
             -0.2002, -0.3647, 0.0 };
-      mapIMP_age = mapPutter(betasIMP_age, 1, 5);
-      mapIMP_age.put("0", betasIMP_age[0]);
+      mapAge = mapPutter(betasAge, 1, 5);
+      mapAge.put("0", betasAge[0]);
 
-      // IMP_T3 범주값 E, Q, R, W
-      Map<String, Double> mapIMP_T3 = new HashMap<String, Double>();
-      mapIMP_T3.put("E", -0.0387);
-      mapIMP_T3.put("Q", -0.0134);
-      mapIMP_T3.put("R", -0.1467);
-      mapIMP_T3.put("W", 0.0);
+      // T3 범주값 E, Q, R, W
+      Map<String, Double> mapT3 = new HashMap<String, Double>();
+      mapT3.put("E", -0.0387);
+      mapT3.put("Q", -0.0134);
+      mapT3.put("R", -0.1467);
+      mapT3.put("W", 0.0);
 
       // T4 연속형
       Map<String, Double> mapT4 = new HashMap<String, Double>();
@@ -189,12 +189,12 @@ public class Beta {
       String betasT12 = new String();
       mapT12.put(betasT12, 0.000002006);
 
-      // IMP_T13 범주값 G, K, O, R
-      Map<String, Double> mapIMP_T13 = new HashMap<String, Double>();
-      mapIMP_T13.put("G", 0.6372);
-      mapIMP_T13.put("K", -0.9395);
-      mapIMP_T13.put("O", -0.5939);
-      mapIMP_T13.put("R", 0.0);
+      // T13 범주값 G, K, O, R
+      Map<String, Double> mapT13 = new HashMap<String, Double>();
+      mapT13.put("G", 0.6372);
+      mapT13.put("K", -0.9395);
+      mapT13.put("O", -0.5939);
+      mapT13.put("R", 0.0);
 
       // T14 범주값 S, U
       Map<String, Double> mapT14 = new HashMap<String, Double>();
@@ -214,7 +214,7 @@ public class Beta {
          returnMap = mapC4;
       } else if (columnName.equals("c5") || columnName.equals("C5")) {
          returnMap = mapC5;
-      } else if (columnName.equals("c6") || columnName.equals("C6   ")) {
+      } else if (columnName.equals("c6") || columnName.equals("C6")) {
          returnMap = mapC6;
       } else if (columnName.equals("c7") || columnName.equals("C7")) {
          returnMap = mapC7;
@@ -241,9 +241,9 @@ public class Beta {
       } else if (columnName.equals("i36") || columnName.equals("I36")) {
          returnMap = mapI36;
       } else if (columnName.equals("age") || columnName.equals("AGE")) {
-         returnMap = mapIMP_age;
+         returnMap = mapAge;
       } else if (columnName.equals("t3") || columnName.equals("T3")) {
-         returnMap = mapIMP_T3;
+         returnMap = mapT3;
       } else if (columnName.equals("t4") || columnName.equals("T4")) {
          returnMap = mapT4;
       } else if (columnName.equals("t5") || columnName.equals("T5")) {
@@ -257,7 +257,7 @@ public class Beta {
       } else if (columnName.equals("t12") || columnName.equals("T12")) {
          returnMap = mapT12;
       } else if (columnName.equals("t13") || columnName.equals("T13")) {
-         returnMap = mapIMP_T13;
+         returnMap = mapT13;
       } else if (columnName.equals("t14") || columnName.equals("T14")) {
          returnMap = mapT14;
       } else if (columnName.equals("t15") || columnName.equals("T15")) {
