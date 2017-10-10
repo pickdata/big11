@@ -20,18 +20,22 @@ public class Beta {
       }
       return map;
    }
-
-   public Map<String, Double> mapPutter(Double[] betas, int initialValue, int columnPlusValue) {
+//   mapC9 = mapPutter(betasC9, 1,2, 12);
+//   Double[] betasC9 = new Double[] 
+//   { -0.3144, 1: -0.3187, 13: 0.1469, 25: 0.1506, 0.4251, 0.5429, 0.7831, 0.7734, -0.2115, 0.3215, -0.0464, 0.0 };
+   public Map<String, Double> mapPutter(Double[] betas, int initialValue, int index ,int columnPlusValue) {
       Map<String, Double> map = new HashMap<String, Double>();
-      for (int i = initialValue; i < betas.length; i++) {
-         String name = i + columnPlusValue + "";
-         Double value = betas[i];
+      for (int i = index; i < betas.length; i++) {
+    	  String name = initialValue+ "";
+         Double value = betas[index];
+         initialValue += columnPlusValue ; 
+         index++;
          map.put(name, value);
       }
       return map;
    }
 
-   public Map<String, Double> mapPutter(Double[] betas, int initialValue, String logisticName) {
+   public Map<String, Double> mapPutter(Double[] betas, int initialValue,String logisticName) {
       Map<String, Double> map = new HashMap<String, Double>();
       for (int i = initialValue; i < betas.length; i++) {
          String name = i + logisticName + "";
@@ -79,15 +83,14 @@ public class Beta {
       Double[] betasC9 = new Double[] { -0.3144, -0.3187, 0.1469, 0.1506, 0.4251, 0.5429, 0.7831, 0.7734, -0.2115,
             0.3215, -0.0464, 0.0 };
       // method overloading
-      mapC9 = mapPutter(betasC9, 1, 12);
+      mapC9 = mapPutter(betasC9, 1,1, 12);
       mapC9.put("0", betasC9[0]);
 
       // C10 범주값 0, 1 ~ 121 증가값(+12)
       Map<String, Double> mapC10 = new HashMap<String, Double>();
-      Double[] betasC10 = new Double[] { -0.026, -0.3472, 0.0402, 0.426, 0.6313, 0.7274, 0.6087, 0.157, 0.1364,
-            -0.0446, 0.283, 0.0 };
+      Double[] betasC10 = new Double[] { -0.026, -0.3472, 0.0402, 0.426, 0.6313, 0.7274, 0.6087, 0.157, 0.1364, -0.0446, 0.283, 0.0 };
       // method overloading
-      mapC10 = mapPutter(betasC10, 1, 12);
+      mapC10 = mapPutter(betasC10, 1,1, 12);
       mapC10.put("0", betasC10[0]);
 
       // C11 범주값 0 ~ 11 증가값(+1)
@@ -98,9 +101,8 @@ public class Beta {
 
       // C12 범주값 0, 1 ~ 121 증가값(+12)
       Map<String, Double> mapC12 = new HashMap<String, Double>();
-      Double[] betasC12 = new Double[] { -5.0047, -1.323, -0.2899, 0.4136, 0.4339, 0.3615, 0.0637, -0.0598, 0.2322,
-            0.1051, -0.0442, 0.0 };
-      mapC12 = mapPutter(betasC12, 1, 12);
+      Double[] betasC12 = new Double[] { -5.0047, -1.323, -0.2899, 0.4136, 0.4339, 0.3615, 0.0637, -0.0598, 0.2322, 0.1051, -0.0442, 0.0 };
+      mapC12 = mapPutter(betasC12, 1,1, 12);
       mapC12.put("0", betasC12[0]);
 
       // C13 범주값 0 ~ 10 증가값(+1)
@@ -145,10 +147,10 @@ public class Beta {
 
       // age 범주값 0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70
       Map<String, Double> mapAge = new HashMap<String, Double>();
-      Double[] betasAge = new Double[] { 0.0, -0.5675, -0.4438, -0.1262, 0.2786, 0.1947, 0.2117, 0.1288, 0.0302,
+      Double[] betasAge = new Double[] { -0.5675, -0.4438, -0.1262, 0.2786, 0.1947, 0.2117, 0.1288, 0.0302,
             -0.2002, -0.3647, 0.0 };
-      mapAge = mapPutter(betasAge, 1, 5);
-      mapAge.put("0", betasAge[0]);
+      mapAge = mapPutter(betasAge, 20,0, 5);
+//      mapAge.put("0", betasAge[0]);
 
       // T3 범주값 E, Q, R, W
       Map<String, Double> mapT3 = new HashMap<String, Double>();
@@ -171,7 +173,7 @@ public class Beta {
       Map<String, Double> mapT7 = new HashMap<String, Double>();
       Double[] betasT7 = new Double[] { 4.0782, -0.9712, 3.1302, 3.6544, 3.4787, 3.5755, 3.4595, 3.6322, 3.7544,
             3.6875, 3.7613, 4.6255, 0.0 };
-      mapT7 = mapPutter(betasT7, 1, 100000);
+      mapT7 = mapPutter(betasT7, 0,0, 100000);
       mapT7.put("0", betasT7[0]);
 
       // T10 연속형
