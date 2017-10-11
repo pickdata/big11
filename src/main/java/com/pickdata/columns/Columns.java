@@ -435,7 +435,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.setArea1Min(Double.MIN_VALUE);
+		ct.setArea1Min(new Double(0));
 		ct.setArea1Max((double) 15);
 		ct.setArea2Max((double) 100);
 		ct.setArea3Max((double) 172);
@@ -465,7 +465,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.setArea1Min(Double.MIN_VALUE);
+		ct.setArea1Min(new Double(0));
 		ct.setArea1Max((double) 30000);
 		ct.setArea2Max((double) 40000);
 		ct.setArea3Max((double) 50000);
@@ -480,7 +480,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.setArea1Min(Double.MIN_VALUE);
+		ct.setArea1Min(new Double(0));
 		ct.setArea1Max((double) 40000);
 		ct.setArea2Max((double) 50000);
 		ct.setArea3Max((double) 70000);

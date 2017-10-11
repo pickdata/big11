@@ -23,6 +23,7 @@ public class ColumnSelector {
 		categoryData.add("i16");
 		categoryData.add("i19");
 		categoryData.add("i32");
+		categoryData.add("t3");
 		categoryData.add("t11");
 		categoryData.add("t13");
 		categoryData.add("t14");
@@ -33,11 +34,10 @@ public class ColumnSelector {
 		numericData.add("c6");
 		numericData.add("c7");
 		numericData.add("i30");
-		numericData.add("ci33");
-		numericData.add("ci36");
+		numericData.add("i33");
+		numericData.add("i36");
 		numericData.add("t1");
 		numericData.add("t2");
-		numericData.add("t3");
 		numericData.add("t4");
 		numericData.add("t5");
 		numericData.add("t7");
