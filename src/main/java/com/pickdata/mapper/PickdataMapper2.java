@@ -15,7 +15,9 @@ import com.pickdata.columns.ColumnList;
 import com.pickdata.parser.BigContestParser;
 import com.pickdata.taggedKey.TaggedKey;
 
+import lombok.extern.java.Log;
 
+@Log
 public class PickdataMapper2 implements Mapper<LongWritable, Text, TaggedKey, DoubleWritable> {
 
 	TaggedKey outputKey = new TaggedKey();
@@ -39,6 +41,7 @@ public class PickdataMapper2 implements Mapper<LongWritable, Text, TaggedKey, Do
 			outputKey.setId(Integer.parseInt(parser.map.get("id")));
 			outputKey.setTag(columnName[i]);
 			System.out.println("id = " + parser.map.get("id") + "");
+			log.info("id = " + parser.map.get("id"));
 
 			// value set
 			outValue.set(score);

@@ -12,11 +12,14 @@ import com.pickdata.columns.Columns;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.java.Log;
 
 @Getter
 @Setter
 @ToString
+@Log
 public class Beta2 {
+	
 	private double pod = 20;
 	private Map<String, Double[]> map = new HashMap<String, Double[]>();
 
@@ -40,7 +43,7 @@ public class Beta2 {
 	// area + 베타 값 입력
 	public Map<String, Double> mapPutter(String columnName, Double[] betas) {
 		Map<String, Double> map = new HashMap<String, Double>();
-		for (int i = 1; i < betas.length; i++) {
+		for (int i = 1; i < betas.length+1; i++) {
 			String key = "area" + i;
 			Double value = betas[i - 1];
 			map.put(key, value);
@@ -57,7 +60,7 @@ public class Beta2 {
 
 		String str = "area";
 		List<String> listArea = new ArrayList<String>();
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 12; i++) {
 			listArea.add(str + i);
 		}
 
@@ -113,7 +116,10 @@ public class Beta2 {
 				beta = betas[9];
 			}
 		}
+		log.info("beta = " + beta);
+		log.info("minBeta = " + minBeta);
 		score = (beta - minBeta) * getPod() / Math.log10(2);
+		
 		return score;
 	}
 
