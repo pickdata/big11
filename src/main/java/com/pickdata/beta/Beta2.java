@@ -19,7 +19,7 @@ import lombok.extern.java.Log;
 @ToString
 @Log
 public class Beta2 {
-	
+
 	private double pod = 20;
 	private Map<String, Double[]> map = new HashMap<String, Double[]>();
 
@@ -28,67 +28,67 @@ public class Beta2 {
 		ColumnType result = new ColumnType();
 		if (columnName.equals("c1")) {
 			result = Columns.c1(columnName);
-		}  else if (columnName.equals("c2")) {
+		} else if (columnName.equals("c2")) {
 			result = Columns.c2(columnName);
-		}  else if (columnName.equals("c3")) {
+		} else if (columnName.equals("c3")) {
 			result = Columns.c3(columnName);
-		}  else if (columnName.equals("c4")) {
+		} else if (columnName.equals("c4")) {
 			result = Columns.c4(columnName);
-		}  else if (columnName.equals("c9")) {
+		} else if (columnName.equals("c9")) {
 			result = Columns.c9(columnName);
-		}  else if (columnName.equals("c10")) {
+		} else if (columnName.equals("c10")) {
 			result = Columns.c10(columnName);
-		}  else if (columnName.equals("c11")) {
+		} else if (columnName.equals("c11")) {
 			result = Columns.c11(columnName);
-		}  else if (columnName.equals("c12")) {
+		} else if (columnName.equals("c12")) {
 			result = Columns.c12(columnName);
-		}  else if (columnName.equals("c13")) {
+		} else if (columnName.equals("c13")) {
 			result = Columns.c13(columnName);
-		}  else if (columnName.equals("age")) {
+		} else if (columnName.equals("age")) {
 			result = Columns.age(columnName);
-		}  else if (columnName.equals("sex")) {
+		} else if (columnName.equals("sex")) {
 			result = Columns.sex(columnName);
-		}  else if (columnName.equals("i9")) {
+		} else if (columnName.equals("i9")) {
 			result = Columns.i9(columnName);
-		}  else if (columnName.equals("i16")) {
+		} else if (columnName.equals("i16")) {
 			result = Columns.i16(columnName);
-		}  else if (columnName.equals("i19")) {
+		} else if (columnName.equals("i19")) {
 			result = Columns.i19(columnName);
-		}  else if (columnName.equals("i32")) {
+		} else if (columnName.equals("i32")) {
 			result = Columns.i32(columnName);
-		}  else if (columnName.equals("t11")) {
+		} else if (columnName.equals("t11")) {
 			result = Columns.t11(columnName);
-		}  else if (columnName.equals("t13")) {
+		} else if (columnName.equals("t13")) {
 			result = Columns.t13(columnName);
-		}  else if (columnName.equals("t14")) {
+		} else if (columnName.equals("t14")) {
 			result = Columns.t14(columnName);
-		}  else if (columnName.equals("c5")) {
+		} else if (columnName.equals("c5")) {
 			result = Columns.c5(columnName);
-		}  else if (columnName.equals("c6")) {
+		} else if (columnName.equals("c6")) {
 			result = Columns.c6(columnName);
-		}  else if (columnName.equals("c7")) {
+		} else if (columnName.equals("c7")) {
 			result = Columns.c7(columnName);
-		}  else if (columnName.equals("i30")) {
+		} else if (columnName.equals("i30")) {
 			result = Columns.i30(columnName);
-		}  else if (columnName.equals("i33")) {
+		} else if (columnName.equals("i33")) {
 			result = Columns.i33(columnName);
-		}  else if (columnName.equals("i36")) {
+		} else if (columnName.equals("i36")) {
 			result = Columns.i36(columnName);
-		}  else if (columnName.equals("t1")) {
+		} else if (columnName.equals("t1")) {
 			result = Columns.t1(columnName);
-		}  else if (columnName.equals("t2")) {
+		} else if (columnName.equals("t2")) {
 			result = Columns.t2(columnName);
-		}  else if (columnName.equals("t3")) {
+		} else if (columnName.equals("t3")) {
 			result = Columns.t3(columnName);
-		}  else if (columnName.equals("t4")) {
+		} else if (columnName.equals("t4")) {
 			result = Columns.t4(columnName);
-		}  else if (columnName.equals("t5")) {
+		} else if (columnName.equals("t5")) {
 			result = Columns.t5(columnName);
-		}  else if (columnName.equals("t7")) {
+		} else if (columnName.equals("t7")) {
 			result = Columns.t7(columnName);
-		}  else if (columnName.equals("t15")) {
+		} else if (columnName.equals("t15")) {
 			result = Columns.t15(columnName);
-		}  
+		}
 		return result;
 	}
 
@@ -101,7 +101,7 @@ public class Beta2 {
 	// area + 베타 값 입력
 	public Map<String, Double> mapPutter(String columnName, Double[] betas) {
 		Map<String, Double> map = new HashMap<String, Double>();
-		for (int i = 1; i < betas.length+1; i++) {
+		for (int i = 1; i < betas.length + 1; i++) {
 			String key = "area" + i;
 			Double value = betas[i - 1];
 			map.put(key, value);
@@ -113,12 +113,12 @@ public class Beta2 {
 		ColumnSelector cl = new ColumnSelector();
 		Double score = null;
 		Double beta = null;
-		Double[] betas = new Double[10];
+		Double[] betas = new Double[15];
 		Double minBeta = getColumn(columnName).getMinBeta();
 
 		String str = "area";
 		List<String> listArea = new ArrayList<String>();
-		for (int i = 1; i <= 12; i++) {
+		for (int i = 1; i <= 15; i++) {
 			listArea.add(str + i);
 		}
 
@@ -129,6 +129,7 @@ public class Beta2 {
 		if (cl.categoryData.contains(columnName)) {
 			// area1~10 키로 베타 값 찾기
 			if (getColumn(columnName).getStringArea1().contains(customerValue)) {
+				System.out.println(betas[0]);
 				beta = betas[0];
 			} else if (getColumn(columnName).getStringArea2().contains(customerValue)) {
 				beta = betas[1];
@@ -148,6 +149,16 @@ public class Beta2 {
 				beta = betas[8];
 			} else if (getColumn(columnName).getStringArea10().contains(customerValue)) {
 				beta = betas[9];
+			} else if (getColumn(columnName).getStringArea11().contains(customerValue)) {
+				beta = betas[10];
+			} else if (getColumn(columnName).getStringArea12().contains(customerValue)) {
+				beta = betas[11];
+			} else if (getColumn(columnName).getStringArea13().contains(customerValue)) {
+				beta = betas[12];
+			} else if (getColumn(columnName).getStringArea14().contains(customerValue)) {
+				beta = betas[13];
+			} else if (getColumn(columnName).getStringArea15().contains(customerValue)) {
+				beta = betas[14];
 			}
 		}
 		if (cl.numericData.contains(columnName)) {
@@ -172,13 +183,23 @@ public class Beta2 {
 				beta = betas[8];
 			} else if (getColumn(columnName).getArea9Max() <= value && value < getColumn(columnName).getArea10Max()) {
 				beta = betas[9];
+			} else if (getColumn(columnName).getArea10Max() <= value && value < getColumn(columnName).getArea11Max()) {
+				beta = betas[10];
+			} else if (getColumn(columnName).getArea11Max() <= value && value < getColumn(columnName).getArea12Max()) {
+				beta = betas[11];
+			} else if (getColumn(columnName).getArea12Max() <= value && value < getColumn(columnName).getArea13Max()) {
+				beta = betas[12];
+			} else if (getColumn(columnName).getArea13Max() <= value && value < getColumn(columnName).getArea14Max()) {
+				beta = betas[13];
+			} else if (getColumn(columnName).getArea14Max() <= value && value < getColumn(columnName).getArea15Max()) {
+				beta = betas[14];
 			}
+
 		}
 		log.info("beta = " + beta);
 		log.info("minBeta = " + minBeta);
 		score = (beta - minBeta) * getPod() / Math.log10(2);
-		
 		return score;
-	}
 
+	}
 }

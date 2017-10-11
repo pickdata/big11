@@ -14,6 +14,15 @@ import old.pickdata.beta.Score;
 
 public class ScoreBetaTest {
 	@Test
+	public void getScoreTest1() {
+		Beta2 bt = new Beta2();
+		String columnName ="t7";
+		String customerValue ="800000";
+		System.out.println(bt.map(columnName));
+		System.out.println(bt.getColumn(columnName).getStringArea9().contains(customerValue));
+		System.out.println(bt.score(columnName, customerValue));
+	}	
+	@Test
 	public void getScoreTest() {
 		Beta2 bt = new Beta2();
 

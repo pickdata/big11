@@ -26,6 +26,9 @@ public class ColumnType {
 	private ArrayList<String> stringArea10 = new ArrayList<String>();
 	private ArrayList<String> stringArea11 = new ArrayList<String>();
 	private ArrayList<String> stringArea12 = new ArrayList<String>();
+	private ArrayList<String> stringArea13 = new ArrayList<String>();
+	private ArrayList<String> stringArea14 = new ArrayList<String>();
+	private ArrayList<String> stringArea15 = new ArrayList<String>();
 	
 	private Double area1Min;
 	private Double area1Max;
@@ -38,6 +41,11 @@ public class ColumnType {
 	private Double area8Max;
 	private Double area9Max;
 	private Double area10Max;
+	private Double area11Max;
+	private Double area12Max;
+	private Double area13Max;
+	private Double area14Max;
+	private Double area15Max;
 	
 	
 	

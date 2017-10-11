@@ -24,6 +24,7 @@ public class ColumnSelector {
 		categoryData.add("i19");
 		categoryData.add("i32");
 		categoryData.add("t3");
+		categoryData.add("t7");
 		categoryData.add("t11");
 		categoryData.add("t13");
 		categoryData.add("t14");
@@ -40,7 +41,6 @@ public class ColumnSelector {
 		numericData.add("t2");
 		numericData.add("t4");
 		numericData.add("t5");
-		numericData.add("t7");
 		numericData.add("t15");
 		
 	}

@@ -305,7 +305,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.getStringArea1().add("missing");
+		ct.getStringArea1().add("X");
 		ct.getStringArea2().add("O");
 		ct.getStringArea3().add("K");
 		ct.getStringArea4().add("G");
@@ -334,7 +334,7 @@ public class Columns {
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
 		ct.setArea1Min((double) 0);
-		ct.setArea2Max((double) 9001);
+		ct.setArea1Max((double) 9001);
 		ct.setArea2Max((double) 24001);
 		ct.setArea3Max((double) 57001);
 		ct.setArea4Max((double) 129001);
@@ -420,7 +420,7 @@ public class Columns {
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
 		ct.setArea1Min((double) 0);
-		ct.setArea2Max((double) 49);
+		ct.setArea1Max((double) 49);
 		ct.setArea2Max((double) 126);
 		ct.setArea3Max((double) 228);
 		ct.setArea4Max((double) 431);
@@ -450,7 +450,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.getStringArea1().add("MISSING");
+		ct.getStringArea1().add("X");
 		ct.getStringArea2().add("R");
 		ct.getStringArea3().add("W");
 		ct.getStringArea4().add("Q");
@@ -465,7 +465,7 @@ public class Columns {
 		ct.setBeta(beta);
 		ct.setMinBeta(minBeta(beta));
 		ct.getMap().put(columnName, beta);
-		ct.setArea1Min(new Double(0));
+		ct.setArea1Min(new Double(-2));
 		ct.setArea1Max((double) 30000);
 		ct.setArea2Max((double) 40000);
 		ct.setArea3Max((double) 50000);
