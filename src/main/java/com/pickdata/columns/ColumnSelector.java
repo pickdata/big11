@@ -21,7 +21,7 @@ public class ColumnSelector {
 		categoryData.add("sex");
 		categoryData.add("i9");
 		categoryData.add("i16");
-		categoryData.add("ci19");
+		categoryData.add("i19");
 		categoryData.add("i32");
 		categoryData.add("t11");
 		categoryData.add("t13");

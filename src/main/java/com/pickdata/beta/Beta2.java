@@ -28,9 +28,67 @@ public class Beta2 {
 		ColumnType result = new ColumnType();
 		if (columnName.equals("c1")) {
 			result = Columns.c1(columnName);
+		}  else if (columnName.equals("c2")) {
+			result = Columns.c2(columnName);
+		}  else if (columnName.equals("c3")) {
+			result = Columns.c3(columnName);
+		}  else if (columnName.equals("c4")) {
+			result = Columns.c4(columnName);
+		}  else if (columnName.equals("c9")) {
+			result = Columns.c9(columnName);
+		}  else if (columnName.equals("c10")) {
+			result = Columns.c10(columnName);
+		}  else if (columnName.equals("c11")) {
+			result = Columns.c11(columnName);
+		}  else if (columnName.equals("c12")) {
+			result = Columns.c12(columnName);
+		}  else if (columnName.equals("c13")) {
+			result = Columns.c13(columnName);
+		}  else if (columnName.equals("age")) {
+			result = Columns.age(columnName);
+		}  else if (columnName.equals("sex")) {
+			result = Columns.sex(columnName);
+		}  else if (columnName.equals("i9")) {
+			result = Columns.i9(columnName);
+		}  else if (columnName.equals("i16")) {
+			result = Columns.i16(columnName);
+		}  else if (columnName.equals("i19")) {
+			result = Columns.i19(columnName);
+		}  else if (columnName.equals("i32")) {
+			result = Columns.i32(columnName);
+		}  else if (columnName.equals("t11")) {
+			result = Columns.t11(columnName);
+		}  else if (columnName.equals("t13")) {
+			result = Columns.t13(columnName);
+		}  else if (columnName.equals("t14")) {
+			result = Columns.t14(columnName);
 		}  else if (columnName.equals("c5")) {
 			result = Columns.c5(columnName);
-		}
+		}  else if (columnName.equals("c6")) {
+			result = Columns.c6(columnName);
+		}  else if (columnName.equals("c7")) {
+			result = Columns.c7(columnName);
+		}  else if (columnName.equals("i30")) {
+			result = Columns.i30(columnName);
+		}  else if (columnName.equals("i33")) {
+			result = Columns.i33(columnName);
+		}  else if (columnName.equals("i36")) {
+			result = Columns.i36(columnName);
+		}  else if (columnName.equals("t1")) {
+			result = Columns.t1(columnName);
+		}  else if (columnName.equals("t2")) {
+			result = Columns.t2(columnName);
+		}  else if (columnName.equals("t3")) {
+			result = Columns.t3(columnName);
+		}  else if (columnName.equals("t4")) {
+			result = Columns.t4(columnName);
+		}  else if (columnName.equals("t5")) {
+			result = Columns.t5(columnName);
+		}  else if (columnName.equals("t7")) {
+			result = Columns.t7(columnName);
+		}  else if (columnName.equals("t15")) {
+			result = Columns.t15(columnName);
+		}  
 		return result;
 	}
 
