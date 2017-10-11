@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.pickdata.columns.ColumnSelector;
+import com.pickdata.columns.ColumnType;
+import com.pickdata.columns.Columns;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,43 +20,13 @@ public class Beta2 {
 	private double pod = 20;
 	private Map<String, Double[]> map = new HashMap<String, Double[]>();
 
-	public ColumnType c1(String columnName) {
-		ColumnType ct = new ColumnType();
-		Double[] beta = { 0.5, 0.1, 2.0, -3.3, 0.2, 5.0, 6.0, 7.7, 8.0, new Double(9) };
-		ct.setBeta(beta);
-		ct.setMinBeta(minBeta(beta));
-		ct.getMap().put(columnName, beta);
-		ct.getStringArea1().add("aaa");
-		ct.getStringArea1().add("bbb");
-		ct.getStringArea1().add("ccc");
-		ct.getStringArea2().add("xxx");
-		ct.getStringArea2().add("xxy");
-		ct.getStringArea2().add("xyy");
-		ct.getStringArea3().add("yyy");
-		ct.getStringArea3().add("zzz");
-		return ct;
-	}
-	public ColumnType c5(String columnName) {
-		ColumnType ct = new ColumnType();
-		Double[] beta = {8.0, -0.2, 3.3, 3.0, 0.7, 0.3, 10.4};
-		ct.setBeta(beta);
-		ct.setMinBeta(minBeta(beta));
-		ct.getMap().put(columnName, beta);
-		ct.setArea1Min((double) 0);
-		ct.setArea1Max((double) 1);
-		ct.setArea2Max(2.4);
-		ct.setArea3Max(4.5);
-		ct.setArea4Max((double) 6);
-		return ct;
-	}
-
-	// ColumnData 호출
+	// Column 호출
 	public ColumnType getColumn(String columnName) {
 		ColumnType result = new ColumnType();
 		if (columnName.equals("c1")) {
-			result = c1(columnName);
+			result = Columns.c1(columnName);
 		}  else if (columnName.equals("c5")) {
-			result = c5(columnName);
+			result = Columns.c5(columnName);
 		}
 		return result;
 	}
@@ -61,18 +35,6 @@ public class Beta2 {
 	public Map<String, Double> map(String columnName) {
 
 		return mapPutter(columnName, getColumn(columnName).getBeta());
-	}
-
-	public Double minBeta(Double[] beta) {
-		double a = beta[0];
-		double b = beta[1];
-		for (int i = 0; i < beta.length; i++) {
-			b = beta[i];
-			if (a > b) {
-				a = b;
-			}
-		}
-		return a;
 	}
 
 	// area + 베타 값 입력
@@ -86,12 +48,12 @@ public class Beta2 {
 		return map;
 	}
 
-	public double getScore(String columnName, String customerValue) {
+	public double score(String columnName, String customerValue) {
+		ColumnSelector cl = new ColumnSelector();
 		Double score = null;
 		Double beta = null;
 		Double[] betas = new Double[10];
 		Double minBeta = getColumn(columnName).getMinBeta();
-		ColumnList2 cl = new ColumnList2();
 
 		String str = "area";
 		List<String> listArea = new ArrayList<String>();
@@ -127,7 +89,7 @@ public class Beta2 {
 				beta = betas[9];
 			}
 		}
-		if (cl.nemericData.contains(columnName)) {
+		if (cl.numericData.contains(columnName)) {
 			Double value = Double.parseDouble(customerValue);
 			if (getColumn(columnName).getArea1Min() <= value && value < getColumn(columnName).getArea1Max()) {
 				beta = betas[0];

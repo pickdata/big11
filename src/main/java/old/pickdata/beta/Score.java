@@ -1,4 +1,4 @@
-package com.pickdata.beta;
+package old.pickdata.beta;
 
 public class Score {
 	private int pod = 20;

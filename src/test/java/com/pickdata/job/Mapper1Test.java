@@ -10,8 +10,9 @@ import org.apache.taglibs.standard.tag.common.xml.SetTag;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pickdata.mapper.PickdataMapper;
 import com.pickdata.taggedKey.TaggedKey;
+
+import old.pickdata.mapper.PickdataMapper;
 
 public class Mapper1Test {
 

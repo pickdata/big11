@@ -9,8 +9,7 @@ import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pickdata.mapper.PickdataMapper;
-//import com.pickdata.reducer.PickReducer;
+import old.pickdata.mapper.PickdataMapper;
 
 public class MapperTest {
 

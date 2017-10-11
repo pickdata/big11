@@ -12,7 +12,7 @@ import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
-import com.pickdata.taggedKey.ColumnList;
+import com.pickdata.columns.ColumnList;
 import com.pickdata.taggedKey.TaggedKey;
 
 public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text, DoubleWritable> {

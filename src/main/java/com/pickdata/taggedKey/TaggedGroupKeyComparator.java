@@ -11,7 +11,7 @@ public class TaggedGroupKeyComparator extends WritableComparator {
 	}
 
 	@Override
-	public int compare(WritableComparable a, WritableComparable b) {
+	public int compare(@SuppressWarnings("rawtypes") WritableComparable a, @SuppressWarnings("rawtypes") WritableComparable b) {
 		TaggedKey key1 = (TaggedKey) a;
 		TaggedKey key2 = (TaggedKey) b;
 

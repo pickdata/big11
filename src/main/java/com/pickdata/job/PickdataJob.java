@@ -1,6 +1,6 @@
 package com.pickdata.job;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,7 +17,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.SequenceFileOutputFormat;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.lib.MultipleInputs;
-import org.apache.hadoop.mapred.lib.MultipleOutputs;
+//import org.apache.hadoop.mapred.lib.MultipleOutputs;
 //import org.apache.hadoop.mapreduce.Job;
 //import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 //import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -26,9 +26,11 @@ import org.apache.hadoop.mapred.lib.MultipleOutputs;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import com.pickdata.mapper.PickdataMapper;
+import com.pickdata.mapper.PickdataMapper2;
 import com.pickdata.reducer.PickdataReducer;
 import com.pickdata.taggedKey.TaggedKey;
+
+//import old.pickdata.mapper.PickdataMapper;
 
 public class PickdataJob extends Configured implements Tool {
 
@@ -48,7 +50,8 @@ public class PickdataJob extends Configured implements Tool {
 		
 		Path inpath = new Path("/home/java/pickdata/sample/Data_set.csv");
 		
-		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, PickdataMapper.class);
+//		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, PickdataMapper.class);
+		MultipleInputs.addInputPath(job, inpath, TextInputFormat.class, PickdataMapper2.class);
 
 		job.setMapOutputKeyClass(TaggedKey.class);
 		job.setMapOutputValueClass(DoubleWritable.class);

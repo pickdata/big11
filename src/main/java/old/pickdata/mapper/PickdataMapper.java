@@ -1,4 +1,4 @@
-package com.pickdata.mapper;
+package old.pickdata.mapper;
 
 import java.io.IOException;
 
@@ -10,10 +10,11 @@ import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reporter;
 
-import com.pickdata.beta.Score;
+import com.pickdata.columns.ColumnList;
 import com.pickdata.parser.BigContestParser;
-import com.pickdata.taggedKey.ColumnList;
 import com.pickdata.taggedKey.TaggedKey;
+
+import old.pickdata.beta.Score;
 
 public class PickdataMapper implements Mapper<LongWritable, Text, TaggedKey, DoubleWritable> {
 

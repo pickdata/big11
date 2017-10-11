@@ -1,4 +1,4 @@
-package com.pickdata.beta;
+package com.pickdata.columns;
 
 import java.util.ArrayList;
 import java.util.HashMap;

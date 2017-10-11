@@ -1,4 +1,4 @@
-package com.pickdata.taggedKey;
+package com.pickdata.columns;
 
 public class ColumnList {
 
