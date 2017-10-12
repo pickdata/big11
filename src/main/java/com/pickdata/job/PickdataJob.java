@@ -1,6 +1,5 @@
 package com.pickdata.job;
 
-//import java.util.Arrays;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,7 +8,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.SequenceFile.CompressionType;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -23,8 +21,6 @@ import com.pickdata.reducer.PickdataReducer;
 import com.pickdata.taggedKey.GroupKeyPartitioner;
 import com.pickdata.taggedKey.TaggedGroupKeyComparator;
 import com.pickdata.taggedKey.TaggedKey;
-
-//import old.pickdata.mapper.PickdataMapper;
 
 public class PickdataJob extends Configured implements Tool {
 

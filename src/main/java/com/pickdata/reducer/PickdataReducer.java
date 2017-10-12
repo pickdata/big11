@@ -22,6 +22,8 @@ public class PickdataReducer extends Reducer<TaggedKey, DoubleWritable, TaggedKe
 	// 리듀스 출력 key, value
 	private TaggedKey outputKey = new TaggedKey();
 	private DoubleWritable outValue = new DoubleWritable();
+	
+	private Double judgeScore = new Double(36.1);
 
 	@Override
 	protected void reduce(TaggedKey key, Iterable<DoubleWritable> values, Context context)
@@ -35,13 +37,13 @@ public class PickdataReducer extends Reducer<TaggedKey, DoubleWritable, TaggedKe
 		log.info("-----------------------------------------");
 		log.info("sum = "+sum);
 		log.info("-----------------------------------------");
-		if(sum > 36.1)
+		if(sum > judgeScore)
 			judge ="1";
 		else 
 			judge ="0";
 		outValue.set(sum);
 		outputKey.setId(key.getId());
-		outputKey.setTag(judge);
+		outputKey.setTag(judge + ",");
 		context.write(outputKey, outValue);
 	}
 
