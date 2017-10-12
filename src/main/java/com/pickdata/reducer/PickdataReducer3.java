@@ -26,27 +26,17 @@ public class PickdataReducer3 extends Reducer<TaggedKey, DoubleWritable, TaggedK
 	protected void reduce(TaggedKey key, Iterable<DoubleWritable> values, Context context)
 			throws IOException, InterruptedException {
 
-		double totalSum = 0;
-		String nextColumn = key.getTag();
+		double sum = 0;
 		for (DoubleWritable v : values) {
-
-			if (nextColumn != key.getTag()) {
-				totalSum += v.get();
-				outValue.set(totalSum);
-				outputKey.setId(key.getId());
-				outputKey.setTag("");
-				log.info("-----------------------------------------");
-				log.info("totalSum = "+totalSum);
-				log.info("-----------------------------------------");
-				
-				context.write(outputKey, outValue);
-			}
-			totalSum += v.get();
-			System.out.println(v.get());
-			nextColumn = key.getTag();
-			System.out.println(key.getTag());
+			sum += v.get();
 		}
-
+		log.info("-----------------------------------------");
+		log.info("sum = "+sum);
+		log.info("-----------------------------------------");
+		outValue.set(sum);
+		outputKey.setId(key.getId());
+		outputKey.setTag("");
+		context.write(outputKey, outValue);
 	}
 
 }

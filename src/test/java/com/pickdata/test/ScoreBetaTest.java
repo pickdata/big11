@@ -16,11 +16,31 @@ public class ScoreBetaTest {
 	@Test
 	public void getScoreTest1() {
 		Beta2 bt = new Beta2();
-		String columnName ="t7";
-		String customerValue ="800000";
-		System.out.println(bt.map(columnName));
-		System.out.println(bt.getColumn(columnName).getStringArea9().contains(customerValue));
+		String columnName ="c1";
+		String customerValue ="1";
+		double sum =0;
+//		System.out.println(bt.map(columnName));
+//		System.out.println(bt.getColumn(columnName).getStringArea9().contains(customerValue));
 		System.out.println(bt.score(columnName, customerValue));
+		sum += bt.score(columnName, customerValue);
+		columnName ="c5";
+		customerValue ="9001";
+//		System.out.println(bt.map(columnName));
+//		System.out.println(bt.getColumn(columnName).getStringArea9().contains(customerValue));
+		System.out.println(bt.score(columnName, customerValue));
+		sum += bt.score(columnName, customerValue);
+		columnName ="c10";
+		customerValue ="0";
+//		System.out.println(bt.map(columnName));
+//		System.out.println(bt.getColumn(columnName).getStringArea9().contains(customerValue));
+		System.out.println(bt.score(columnName, customerValue));
+		sum += bt.score(columnName, customerValue);
+		columnName ="c11";
+		customerValue ="2";
+		System.out.println(bt.score(columnName, customerValue));
+		sum += bt.score(columnName, customerValue);
+		
+		System.out.println("Total Sum = "+sum);
 	}	
 	@Test
 	public void getScoreTest() {

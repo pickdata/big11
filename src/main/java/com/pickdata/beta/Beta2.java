@@ -129,7 +129,7 @@ public class Beta2 {
 		if (cl.categoryData.contains(columnName)) {
 			// area1~10 키로 베타 값 찾기
 			if (getColumn(columnName).getStringArea1().contains(customerValue)) {
-				System.out.println(betas[0]);
+//				System.out.println(betas[0]);
 				beta = betas[0];
 			} else if (getColumn(columnName).getStringArea2().contains(customerValue)) {
 				beta = betas[1];
