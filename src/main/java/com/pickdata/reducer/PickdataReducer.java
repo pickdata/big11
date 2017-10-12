@@ -1,21 +1,21 @@
 package com.pickdata.reducer;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.JobConf;
-import org.apache.hadoop.mapred.OutputCollector;
-import org.apache.hadoop.mapred.Reducer;
-import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Reducer;
 
-import com.pickdata.columns.ColumnList;
 import com.pickdata.taggedKey.TaggedKey;
 
-public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text, DoubleWritable> {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class PickdataReducer extends Reducer<TaggedKey, DoubleWritable, TaggedKey, DoubleWritable> {
 
 	static Log log = LogFactory.getLog(PickdataReducer.class);
 
@@ -23,77 +23,26 @@ public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text,
 	private TaggedKey outputKey = new TaggedKey();
 	private DoubleWritable outValue = new DoubleWritable();
 
-	private Integer id = null;
-	private Integer nextId = null;
-
-	private double totalSum = 0;
-
 	@Override
-	public void reduce(TaggedKey key, Iterator<DoubleWritable> values, OutputCollector<Text, DoubleWritable> output,
-			Reporter reporter) throws IOException {
+	protected void reduce(TaggedKey key, Iterable<DoubleWritable> values, Context context)
+			throws IOException, InterruptedException {
 
-		if (getId() == null) {
-			setId(key.getId());
-			setTotalSum(values.next().get());
-			log.info(getId() + ", totalsum = " + totalSum);
-
-		} else {
-			setNextId(key.getId());
-
-			if (getId().equals(getNextId())) {
-				setTotalSum(getTotalSum() + values.next().get());
-
-
-			} else {
-				log.info("#################");
-				log.info("output : " + getId() + ", totalsum = " + totalSum);
-				log.info("#################");
-				output.collect(new Text(getId() + ","), new DoubleWritable(getTotalSum()));
-				setId(getNextId());
-				setTotalSum(values.next().get());
-			}
+		double sum = 0;
+		String judge="0";
+		for (DoubleWritable v : values) {
+			sum += v.get();
 		}
-		if (key.getId() == 102252
-				&& key.getTag().equals(ColumnList.columnName[ColumnList.columnName.length - 1])) {
-			log.info("#################");
-			log.info("output : " + getId() + ", totalsum = " + totalSum);
-			log.info("#################");
-			output.collect(new Text(getId() + ","), new DoubleWritable(getTotalSum()));
-		}
-
+		log.info("-----------------------------------------");
+		log.info("sum = "+sum);
+		log.info("-----------------------------------------");
+		if(sum > 36.1)
+			judge ="1";
+		else 
+			judge ="0";
+		outValue.set(sum);
+		outputKey.setId(key.getId());
+		outputKey.setTag(judge);
+		context.write(outputKey, outValue);
 	}
 
-	@Override
-	public void configure(JobConf job) {
-
-	}
-
-	@Override
-	public void close() throws IOException {
-
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public double getTotalSum() {
-		return totalSum;
-	}
-
-	public void setTotalSum(double totalSum) {
-		this.totalSum = totalSum;
-	}
-
-	public Integer getNextId() {
-		return nextId;
-	}
-
-	public void setNextId(Integer nextId) {
-		this.nextId = nextId;
-	}
 }

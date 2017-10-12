@@ -5,12 +5,9 @@ import java.io.IOException;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.JobConf;
-import org.apache.hadoop.mapred.Mapper;
-import org.apache.hadoop.mapred.OutputCollector;
-import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Mapper;
 
-import com.pickdata.beta.Beta2;
+import com.pickdata.beta.Beta;
 import com.pickdata.columns.ColumnList;
 import com.pickdata.parser.BigContestParser;
 import com.pickdata.taggedKey.TaggedKey;
@@ -18,7 +15,7 @@ import com.pickdata.taggedKey.TaggedKey;
 import lombok.extern.java.Log;
 
 @Log
-public class PickdataMapper2 implements Mapper<LongWritable, Text, TaggedKey, DoubleWritable> {
+public class PickdataMapper extends Mapper<LongWritable, Text, TaggedKey, DoubleWritable> {
 
 	TaggedKey outputKey = new TaggedKey();
 	DoubleWritable outValue = new DoubleWritable();
@@ -26,9 +23,9 @@ public class PickdataMapper2 implements Mapper<LongWritable, Text, TaggedKey, Do
 	double score;
 
 	@Override
-	public void map(LongWritable key, Text value, OutputCollector<TaggedKey, DoubleWritable> output, Reporter reporter)
-			throws IOException {
-		Beta2 bt = new Beta2();
+	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+
+		Beta bt = new Beta();
 		BigContestParser parser = new BigContestParser(value);
 
 		for (int i = 0; i < columnName.length; i++) {
@@ -47,18 +44,8 @@ public class PickdataMapper2 implements Mapper<LongWritable, Text, TaggedKey, Do
 			outValue.set(score);
 			System.out.println("Score = " + bt.score(columnName[i], customerValue) + "");
 
-			output.collect(outputKey, outValue);
+			context.write(outputKey, outValue);
 			System.out.println("##########");
 		}
-	}
-
-	@Override
-	public void configure(JobConf arg0) {
-
-	}
-
-	@Override
-	public void close() throws IOException {
-
 	}
 }
