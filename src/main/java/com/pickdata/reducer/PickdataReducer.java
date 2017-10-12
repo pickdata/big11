@@ -48,7 +48,7 @@ public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text,
 				log.info("#################");
 				log.info("output : " + getId() + ", totalsum = " + totalSum);
 				log.info("#################");
-				output.collect(new Text(getId() + ""), new DoubleWritable(getTotalSum()));
+				output.collect(new Text(getId() + ","), new DoubleWritable(getTotalSum()));
 				setId(getNextId());
 				setTotalSum(values.next().get());
 			}
@@ -58,7 +58,7 @@ public class PickdataReducer implements Reducer<TaggedKey, DoubleWritable, Text,
 			log.info("#################");
 			log.info("output : " + getId() + ", totalsum = " + totalSum);
 			log.info("#################");
-			output.collect(new Text(getId() + ""), new DoubleWritable(getTotalSum()));
+			output.collect(new Text(getId() + ","), new DoubleWritable(getTotalSum()));
 		}
 
 	}
