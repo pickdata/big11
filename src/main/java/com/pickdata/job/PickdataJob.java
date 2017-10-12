@@ -17,8 +17,8 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.SequenceFileOutputFormat;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.lib.MultipleInputs;
-//import org.apache.hadoop.mapred.lib.MultipleOutputs;
-//import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapred.lib.MultipleOutputs;
+import org.apache.hadoop.mapreduce.Job;
 //import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 //import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 //import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -40,7 +40,6 @@ public class PickdataJob extends Configured implements Tool {
 		
 		ToolRunner.run(new PickdataJob(), args);
 	}
-
 	@Override
 	public int run(String[] arg0) throws Exception {
 		
@@ -80,7 +79,8 @@ public class PickdataJob extends Configured implements Tool {
 		return 0;
 	}		
 		
-		/*
+	/*
+
 		Job job = Job.getInstance(getConf(),"SequenceFileCreator");
 		
 		job.setJarByClass(SequenceFileCreatorMap2C11.class);
