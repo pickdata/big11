@@ -38,7 +38,8 @@ public class PickdataJob extends Configured implements Tool {
 		job.setJarByClass(PickdataJob.class);
 		
 		//input 파일 설정
-		Path inpath = new Path("/home/java/pickdata/sample/Data_set.csv");
+//		Path inpath = new Path("/home/java/pickdata/sample/Data_set.csv");
+		Path inpath = new Path("/home/java/pickdata/sample/Test_set.csv");
 		FileInputFormat.setInputPaths(job, inpath);
 
 		//mapper 설정
