@@ -20,7 +20,7 @@ import lombok.extern.java.Log;
 @Log
 public class Beta {
 
-	private double pod = 20;
+	private double pdo = 20;
 	private Map<String, Double[]> map = new HashMap<String, Double[]>();
 
 	
@@ -131,7 +131,7 @@ public class Beta {
 		}
 		log.info("beta = " + beta);
 		log.info("minBeta = " + minBeta);
-		score = (beta - minBeta) * getPod() / Math.log10(2);
+		score = (beta - minBeta) * getPdo() / Math.log10(2);
 		return score;
 
 	}
